@@ -1,5 +1,9 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
 import * as bcrypt from "bcryptjs";
+import { Hobby } from "./Hobby";
+import { Book } from "./Book";
+import { Movie } from "./Movie";
+import { VideoGame } from "./VideoGame";
 
 @Entity()
 export class User {
@@ -18,6 +22,15 @@ export class User {
     
     @Column()
     password: string;
+
+    @OneToMany(type => Book, book => book.user) 
+    books: Book[];
+
+    @OneToMany(type => Movie, movie => movie.user) 
+    movies: Movie[];
+
+    @OneToMany(type => VideoGame, videogame => videogame.user) 
+    videogames: VideoGame[];
 
     hashPassword() {
         this.password = bcrypt.hashSync(this.password, 8);

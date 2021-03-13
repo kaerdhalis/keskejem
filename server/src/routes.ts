@@ -9,4 +9,8 @@ router.post("/signin", SignInController.login);
 
 router.post("/signup", SignUpController.newUser);
 
+//Edit one user
+router.get("/:username",   UserController.getHobbies);
+router.post("/book",   UserController.newBook);
+
 export default router;
