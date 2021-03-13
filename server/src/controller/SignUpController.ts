@@ -10,10 +10,10 @@ class SignUpController {
 
     static newUser = async (req: Request, res: Response) => {
         //Get parameters from the body
-        let { firstname, lastname, username, password } = req.body;
+        let { firstName, lastName, username, password } = req.body;
         let user = new User();
-        user.firstName = firstname;
-        user.lastName = lastname;
+        user.firstName = firstName;
+        user.lastName = lastName;
         user.username = username;
         user.password = password;
       
@@ -25,7 +25,7 @@ class SignUpController {
         }
       
         //Hash the password, to securely store on DB
-        console.log(firstname,lastname,username,password);
+        console.log(firstName,lastName,username,password);
         user.hashPassword();
       
         //Try to save. If fails, the username is already in use
