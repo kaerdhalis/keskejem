@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+
 import './App.css';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import Home from './components/Home';
-import Dashboard from './components/Dashboard';
-import SigIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
+import Dashboard from './components/Dashboard';
 
 
 function App() {
@@ -22,7 +22,9 @@ function App() {
           <div className="content">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/SignUp" component={SignUp} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/signin" component={SignIn} />
+              <Route path={'/:username'} exact component={Dashboard} />
             </Switch>
           </div>
         </div>

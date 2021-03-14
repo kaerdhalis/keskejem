@@ -41,7 +41,7 @@ class SignUp extends React.Component<RouteComponentProps, IFormState> {
         this.setState({ submitSuccess: true, values: [...this.state.values, formData], loading: false });
         axios.post(`http://localhost:4000/signup`, formData).then(data => [
             setTimeout(() => {
-                this.props.history.push('/');
+                this.props.history.push('/'+formData.username);
             }, 1500)
         ]);
     }
