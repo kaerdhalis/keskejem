@@ -1,6 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
 import * as bcrypt from "bcryptjs";
-import { Hobby } from "./Hobby";
 import { Book } from "./Book";
 import { Movie } from "./Movie";
 import { VideoGame } from "./VideoGame";
