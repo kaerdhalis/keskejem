@@ -1,15 +1,18 @@
 import React from 'react';
- 
-function Home() {
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+
+class Home extends React.Component<RouteComponentProps<any>> {
+
+public render() {
   return (
     <div>
-      Welcome to the Home Page!
+      <h1>Welcome to the Home Page!</h1>
       <div>
-      <button type="button">Click Me!</button>
-      <button type="button">Click Me too!</button>
+      <button type="button" onClick={() => this.props.history.push('/signin/')}>Sign In</button>
+      <button type="button" onClick={() => this.props.history.push('/signup/')}>Sign Up</button>
       </div>
     </div>
   );
 }
- 
-export default Home;
+}
+export default withRouter(Home);

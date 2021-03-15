@@ -3,16 +3,16 @@ import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
+//used to stock the hobbies
 export interface IFormState {
   username: string;
   books: any[];
   movies: any[];
   videogames: any[];
-
-
 }
 
 class Dashboard extends React.Component<RouteComponentProps<any>, IFormState> {
+
   constructor(props: RouteComponentProps) {
       super(props);
       this.state = {
@@ -25,32 +25,36 @@ class Dashboard extends React.Component<RouteComponentProps<any>, IFormState> {
   }
 
   public componentDidMount(): void {
+
+    //fetch the list of books of the user
     axios.get(`http://localhost:4000/${this.state.username}/books`).then(response => [
-            setTimeout(() => {
-                console.log(response);
-                this.setState({books: response.data});
+        setTimeout(() => {
+          console.log(response);
+          this.setState({books: response.data});
             }, 1500)
         ]).catch(error => {
-            console.log(error)
-          });
+          console.log(error)
+        });
 
-          axios.get(`http://localhost:4000/${this.state.username}/movies`).then(response => [
-            setTimeout(() => {
-                console.log(response);
-                this.setState({movies: response.data});
-            }, 1500)
-        ]).catch(error => {
-            console.log(error)
-          });
+    //fetch the list of moviess of the user    
+    axios.get(`http://localhost:4000/${this.state.username}/movies`).then(response => [
+      setTimeout(() => {
+        console.log(response);
+        this.setState({movies: response.data})
+        }, 1500)
+      ]).catch(error => {
+        console.log(error)
+      });
 
-          axios.get(`http://localhost:4000/${this.state.username}/videogames`).then(response => [
-            setTimeout(() => {
-                console.log(response);
-                this.setState({videogames: response.data});
-            }, 1500)
-        ]).catch(error => {
-            console.log(error)
-          });
+    //fetch the list of videogames of the user  
+    axios.get(`http://localhost:4000/${this.state.username}/videogames`).then(response => [
+      setTimeout(() => {
+        console.log(response);
+        this.setState({videogames: response.data});
+        }, 1500)
+      ]).catch(error => {
+        console.log(error)
+      });
 
 
 
@@ -64,24 +68,24 @@ class Dashboard extends React.Component<RouteComponentProps<any>, IFormState> {
 
   return(
     <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20 }}>
-          <div><h2>Books</h2>
-          <ul>
-            {books.map((book, index) => (
-                <li key={`${book}-${index}`}>{ book.name }</li>
-            ))}
+      
+      <div><h2>Books</h2>
+        <ul>
+          {books.map((book, index) => (
+             <li key={`${book}-${index}`}>{ book.name }</li>
+          ))}
         </ul>
-             </div>
-          <div>
-            <h2>Movies</h2>
-            <ul>
+      </div>
+      <div>
+        <h2>Movies</h2>
+          <ul>
             {movies.map((movie, index) => (
                 <li key={`${movie}-${index}`}>{ movie.name }</li>
             ))}
-        </ul>
-            
-            </div>
-          <div> <h2>Videogames</h2> </div>
-          <ul>
+           </ul>  
+      </div>
+      <div> <h2>Videogames</h2> </div>
+        <ul>
             {videogames.map((videogame, index) => (
                 <li key={`${videogame}-${index}`}>{ videogame.name }</li>
             ))}
