@@ -24,3 +24,13 @@ services:
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "password"
       MYSQL_DATABASE: "test"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+     - PMA_HOST=db
+    restart: always
+    depends_on:
+     - db
+    ports:
+     - 8888:80

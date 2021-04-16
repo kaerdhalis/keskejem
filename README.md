@@ -10,8 +10,10 @@ Projet d'application resfull permetant a un visiteur de créer un compte ou de s
 
 ## Set up
   pour lancer l'application, utiliser la commande ```docker-compose up --build``` ou bien ```npm start``` dans le dossier client et le dossier server pour lancer en local, il faut cependant modifier le fichier **ormconfig.json** pour connecter le server à votre database locale.
- 
+
 l'application est ensuite accessible a l'adresse http://localhost:3000
+
+Il est egalement possible de consulter la base de donné grace à *phpmyadmin* à l'adresse http://localhost:8888 
 
 ## A faire
 Pour le moment il n'est pas possible d'enregistrer des hobbies pour les utilisateurs depuis la page web cependant il est possible de le faire depuis postman en utilisant la requette **POST** sur l'url suivante *http://localhost:4000/:username/{book|movie|videogame}* avec une requette json de la forme :
